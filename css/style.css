@@ -125,3 +125,7 @@ body {
   color: hsl(292, 16%, 49%);
   padding-bottom: 2rem;
 }
+
+.u-active {
+  max-height: fit-content;
+}
