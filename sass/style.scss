@@ -76,6 +76,7 @@ body {
   &__heading::before {
     content: url(../assets/images/icon-star.svg);
     margin-right: 4rem;
+    margin-right: 2.6rem;
 
     @include respond() {
       position: absolute;
