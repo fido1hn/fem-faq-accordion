@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github link](https://github.com/fido1hn/fem-faq-accordion)
+- Live Site URL: [Live Preview](https://fido1hn.github.io/fem-faq-accordion/)
 
 ### Built with
 
