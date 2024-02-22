@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
-// @font-face {
-//   font-family: "Work Sans";
-//   src: url(../assets/fonts/WorkSans-VariableFont_wght.ttf);
-// }
+@mixin respond {
+  @media screen and (max-width: 629px) {
+    @content;
+  }
+}
 
 * {
   margin: 0;
@@ -19,6 +20,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  overflow-y: scroll;
 }
 
 body {
@@ -28,28 +30,58 @@ body {
   color: hsl(292, 42%, 14%);
 }
 
+.header {
+  background-image: url(../assets/images/background-pattern-desktop.svg);
+  background-size: cover;
+  height: 32rem;
+  max-width: 144rem;
+  margin: 0 auto;
+
+  @include respond() {
+    background-image: url(../assets/images/background-pattern-mobile.svg);
+  }
+}
+
 .accordion {
+  position: relative;
   background-color: #fff;
   max-width: 60rem;
-  max-height: 56.5rem;
+  max-height: 67.5rem;
   padding: 4rem;
+  padding-bottom: 2rem;
   margin: 0 auto;
   margin-top: -15.2rem;
   margin-bottom: 15rem;
   border-radius: 1.5rem;
   box-shadow: 0 2rem 6rem hsla(292, 16%, 49%, 0.25);
 
+  @include respond() {
+    max-width: 86.5%;
+    padding: 2rem;
+    padding-bottom: 1rem;
+  }
+
   &__heading {
     font-size: 5.6rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+
+    @include respond() {
+      margin-left: 5.5rem;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__heading::before {
     content: url(../assets/images/icon-star.svg);
-    width: 3.5rem;
-    height: 3.5rem;
-    margin-right: 2.6rem;
+    margin-right: 4rem;
+
+    @include respond() {
+      position: absolute;
+      top: 21px;
+      left: 20px;
+    }
   }
 
   &__item {
@@ -58,39 +90,55 @@ body {
     }
   }
 
-  &__question {
-    font-size: 1.6rem;
-    font-weight: 600;
-    padding: 2rem 0;
+  &__button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: #9d35d0;
+    }
+
+    &::after {
+      content: url(../assets/images/icon-plus.svg);
+    }
+
+    &--active {
+      &::after {
+        content: url(../assets/images/icon-minus.svg);
+      }
+    }
+  }
+
+  &__question {
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 2rem 0;
+
+    @include respond() {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   &__answer {
     font-size: 1.4rem;
     font-weight: 300;
+    line-height: 1.6;
     color: hsl(292, 16%, 49%);
     padding-bottom: 2rem;
-    display: none;
   }
-
-  &__button {
-    background-image: url(../assets/images/icon-minus.svg);
-    width: 2rem;
-    height: 2rem;
-    background-size: cover;
-  }
-}
-
-.header {
-  background-image: url(../assets/images/background-pattern-desktop.svg);
-  background-size: cover;
-  height: 32rem;
-  max-width: 144rem;
-  margin: 0 auto;
-}
-
-.active > .accordion__answer {
-  display: block;
 }
